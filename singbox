@@ -249,6 +249,14 @@
        "sing-box-vmess"
      ]
    }
+   {
+      "tag": "🛑 AdBlock",
+      "type": "selector",
+      "outbounds": [
+        "block",
+        "direct"
+      ]
+    },
  ],
 "route": {
    "auto_detect_interface": true,
