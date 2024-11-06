@@ -3,6 +3,7 @@ import path from "path"
 
 import { handle_m3u } from "./sources"
 import type { TEPGSource } from "./epgs/utils"
+import { get_from_info } from "./utils"
 
 export interface IREADMESource {
     name: string
@@ -12,26 +13,6 @@ export interface IREADMESource {
 
 export type TREADMESources = IREADMESource[]
 export type TREADMEEPGSources = TEPGSource[]
-
-interface IREADMEMirrorSite {
-    protocol: "http" | "https"
-    url: string
-    frequence: string
-    idc: string
-    provider: string
-}
-
-type TREADMEMirrorSitesMatrix = IREADMEMirrorSite[]
-
-const matrix: TREADMEMirrorSitesMatrix = [
-    {
-        protocol: "https",
-        url: "https://iptv.b2og.com",
-        frequence: "per 2h",
-        idc: "腾讯云",
-        provider: "[GrandDuke1106](https://github.com/GrandDuke1106)",
-    },
-]
 
 export const updateChannelList = (
     name: string,
@@ -48,7 +29,11 @@ export const updateChannelList = (
     let channels: Array<string>[] = []
     while (i < m3uArray.length) {
         const reg = channelRegExp.exec(m3uArray[i]) as RegExpExecArray
-        channels.push([reg[2].replace(/\|/g, "").trim(), m3uArray[i + 1]])
+        channels.push([
+            reg[2].replace(/\|/g, "").trim(),
+            get_from_info(m3uArray[i + 1]),
+            m3uArray[i + 1],
+        ])
         i += 2
     }
 
@@ -64,10 +49,9 @@ export const updateChannelList = (
             `${channels
                 ?.map(
                     (c, idx) =>
-                        `| ${idx + 1} | ${c[0].replace("|", "")} | [${c[0]
-                            .replace("|", "")
-                            .replace(/(\[|\])/g, " ")
-                            .trim()}](${c[1]}) |`
+                        `| ${idx + 1} | ${c[0].replace("|", "")} | ${c[1]} | <${
+                            c[2]
+                        }> |`
                 )
                 .join("\n")}\n\nUpdated at **${new Date()}**`
         )
@@ -91,15 +75,6 @@ export const updateReadme = (
     const readme = fs.readFileSync(readme_temp_p, "utf8").toString()
 
     const after = readme
-        .replace(
-            "<!-- matrix_here -->",
-            matrix
-                ?.map(
-                    (m) =>
-                        `| ${m.protocol} | <${m.url}> | ${m.frequence} | ${m.idc} | ${m.provider} |`
-                )
-                .join("\n")
-        )
         .replace(
             "<!-- channels_here -->",
             `${sources

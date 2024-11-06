@@ -1,12 +1,20 @@
 import fs from "fs"
 import path from "path"
+import { hrtime } from "process"
 
+import { with_github_raw_url_proxy } from "./sources"
+import { m3u2txt } from "./utils"
 import type { ISource } from "./sources"
 import type { TEPGSource } from "./epgs/utils"
 
 export const getContent = async (src: ISource | TEPGSource) => {
-    const res = await fetch(src.url)
-    return [res.status, await res.text()]
+    const now = hrtime.bigint()
+    const url = /^https:\/\/raw.githubusercontent.com\//.test(src.url)
+        ? with_github_raw_url_proxy(src.url)
+        : src.url
+
+    const res = await fetch(url)
+    return [res.ok, await res.text(), now]
 }
 
 export const writeM3u = (name: string, m3u: string) => {
@@ -17,19 +25,32 @@ export const writeM3u = (name: string, m3u: string) => {
     fs.writeFileSync(path.join(path.resolve(), "m3u", `${name}.m3u`), m3u)
 }
 
-export const writeM3uToTxt = (name: string, f_name: string, m3u: string) => {
-    const title = `${name},#genre#`
-    const m3uArray = m3u.split("\n")
-
-    const channelRegExp = /\#EXTINF:-1([^,]*),(.*)/
-    let channels: string = ""
-
-    for (let i = 1; i < m3uArray.length; i += 2) {
-        const reg = channelRegExp.exec(m3uArray[i]) as RegExpExecArray
-        channels += `${reg[2].trim()},${m3uArray[i + 1]}\n`
+export const writeSources = (
+    name: string,
+    f_name: string,
+    sources: Map<string, string[]>
+) => {
+    let srcs = {}
+    for (const [k, v] of sources) {
+        srcs[k] = v
     }
 
-    const txt = `${title}\n${channels}`
+    if (!fs.existsSync(path.resolve("m3u", "sources"))) {
+        fs.mkdirSync(path.resolve("m3u", "sources"))
+    }
+
+    fs.writeFileSync(
+        path.resolve("m3u", "sources", `${f_name}.json`),
+        JSON.stringify({
+            name,
+            sources: srcs,
+        })
+    )
+}
+
+export const writeM3uToTxt = (name: string, f_name: string, m3u: string) => {
+    const m3uArray = m3u.split("\n")
+    let txt = m3u2txt(m3uArray)
 
     if (!fs.existsSync(path.join(path.resolve(), "m3u", "txt"))) {
         fs.mkdirSync(path.join(path.resolve(), "m3u", "txt"))
@@ -43,13 +64,41 @@ export const writeM3uToTxt = (name: string, f_name: string, m3u: string) => {
 
 export const mergeTxts = () => {
     const txts_p = path.resolve("m3u", "txt")
+
     const files = fs.readdirSync(txts_p)
 
     const txts = files
         .map((d) => fs.readFileSync(path.join(txts_p, d).toString()))
         .join("\n")
 
-    fs.writeFileSync(path.join(txts_p, "channels.txt"), txts)
+    fs.writeFileSync(path.join(txts_p, "merged.txt"), txts)
+}
+
+export const mergeSources = () => {
+    const sources_p = path.resolve("m3u", "sources")
+
+    const files = fs.readdirSync(sources_p)
+
+    const res = {
+        name: "Sources",
+        sources: {},
+    }
+
+    files.forEach((f) => {
+        const so = JSON.parse(
+            fs.readFileSync(path.join(sources_p, f), "utf-8")
+        ).sources
+
+        Object.keys(so).forEach((k) => {
+            if (!res.sources[k]) {
+                res.sources[k] = so[k]
+            } else {
+                res.sources[k] = [...new Set([...res.sources[k], ...so[k]])]
+            }
+        })
+    })
+
+    fs.writeFileSync(path.join(sources_p, "sources.json"), JSON.stringify(res))
 }
 
 export const writeEpgXML = (f_name: string, xml: string) => {

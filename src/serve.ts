@@ -6,6 +6,8 @@ import { default as Static } from "koa-static"
 import Router from "koa-router"
 import MarkdownIt from "markdown-it"
 
+import { canIUseIPTVChecker, canIUseM3uFile } from "./checker"
+
 const app = new Koa()
 const router = new Router()
 const md = new MarkdownIt({ html: true })
@@ -61,8 +63,53 @@ router.get("/list/:channel", (ctx) => {
     ctx.body = markdownBody(list_readme_p, back_list_readme_p)
 })
 
+router.get("/check/:channel", async (ctx) => {
+    const chan = ctx.params.channel
+
+    if (!canIUseM3uFile(`${chan}.m3u`)) {
+        ctx.status = 404
+        return
+    }
+
+    if (!(await canIUseIPTVChecker())) {
+        ctx.status = 403
+        return
+    }
+
+    ctx.body = fs.readFileSync(path.resolve("public", "check.html")).toString()
+})
+
+router.get("/api/check", async (ctx) => {
+    if (!(await canIUseIPTVChecker())) {
+        ctx.status = 403
+        return
+    }
+
+    const { url, timeout } = ctx.query
+    if (!url) {
+        ctx.status = 403
+        return
+    }
+
+    try {
+        const t = parseInt(timeout as string, 10)
+        const res = await fetch(
+            `${
+                process.env.IPTV_CHECKER_URL
+            }/check-url-is-available?url=${url}&timeout=${isNaN(t) ? -1 : t}`
+        )
+
+        ctx.status = res.status
+        ctx.body = await res.text()
+    } catch (e) {
+        ctx.status = 500
+        return
+    }
+})
+
 app.use(router.routes())
 
 app.listen(8080, () => {
     console.log("Serving at http://127.0.0.1:8080")
+    console.log("If the network supports ipv6, visit http://[::1]:8080")
 })

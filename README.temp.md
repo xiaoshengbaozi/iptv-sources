@@ -13,6 +13,9 @@ Sources are from:
 - [YueChan/Live](https://github.com/YueChan/Live)
 - [YanG-1989/m3u](https://github.com/YanG-1989/m3u)
 - [fanmingming/live](https://github.com/fanmingming/live)
+- [qwerttvv/Beijing-IPTV](https://github.com/qwerttvv/Beijing-IPTV)
+- [joevess/IPTV](https://github.com/joevess/IPTV)
+- [cymz6/AutoIPTV-Hotel](https://github.com/cymz6/AutoIPTV-Hotel)
 
 EPG Sources are from:
 
@@ -22,12 +25,9 @@ EPG Sources are from:
 
 ## Matrix
 
-You can also use the services provided by Mirror Sites Matrix!
+You can also use the services provided by Mirror Sites Matrix! See <https://m3u.ibert.me> for more.
 
-| HTTP Protocol | URL | Auto-update frequence | IDC | Provider |
-| ------------- | --- | --------------------- | --- | -------- |
 <!-- matrix_here -->
-
 ## Channel
 
 | channel | url | list | count | isRollback |
@@ -42,8 +42,8 @@ You can also use the services provided by Mirror Sites Matrix!
 
 See <https://m3u.ibert.me> to get more.
 
-> Use CDN **(Not recommended)**: You can use `https://fastly.jsdelivr.net/gh/HerbertHe/iptv-sources@gh-pages/` to replace `https://m3u.ibert.me/` for using CDN Service. Due to the **Cache Policy** of CDN, the content wouldn't be the latest, the m3u files would be updated every **2 hours**.
-
 ## LICENSE
 
-GPL-3.0 &copy; Herbert He 2023
+GPL-3.0 &copy; Herbert He
+
+本项目基于 GPL-3.0 协议开源。

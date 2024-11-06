@@ -17,6 +17,9 @@ Sources are from:
 - [YueChan/Live](https://github.com/YueChan/Live)
 - [YanG-1989/m3u](https://github.com/YanG-1989/m3u)
 - [fanmingming/live](https://github.com/fanmingming/live)
+- [qwerttvv/Beijing-IPTV](https://github.com/qwerttvv/Beijing-IPTV)
+- [joevess/IPTV](https://github.com/joevess/IPTV)
+- [cymz6/AutoIPTV-Hotel](https://github.com/cymz6/AutoIPTV-Hotel)
 
 EPG Sources are from:
 
@@ -26,63 +29,40 @@ EPG Sources are from:
 
 See <https://m3u.ibert.me> to get more.
 
-> Use CDN **(Not recommended)**: You can use `https://fastly.jsdelivr.net/gh/HerbertHe/iptv-sources@gh-pages/` to replace `https://m3u.ibert.me/` for using CDN Service. Due to the **Cache Policy** of CDN, the content wouldn't be the latest, the m3u files would be updated every **2 hours**.
-
 ## Deploy by yourself
 
-You can also deploy the project by yourself with docker.
+- [How to deploy with GitHub Pages](https://github.com/HerbertHe/iptv-sources/discussions/35)
+- [How to deploy with docker](https://github.com/HerbertHe/iptv-sources/discussions/36)
+- [How to deploy with nodejs](https://github.com/HerbertHe/iptv-sources/discussions/37)
 
-```bash
-docker run --name iptv-sources -p 3000:8080 -d herberthe0229/iptv-sources:latest
+## Supported Environment Variables
+
+```shell
+# add custom rollback urls, default is empty
+# ROLLBACK_URLS=https://xxxx.xxx.com
+
+# close source proxy, default is false
+# CLOSE_SOURCE_PROXY=true
+
+# add custom github raw source proxy url
+# The custom proxy service you configured MUST supports the request urls, like `${CUSTOM_GITHUB_RAW_SOURCE_PROXY_URL}/https://raw.githubusercontent.com/xxx/xxx`
+# If you want to deploy the ghproxy by yourself, see https://github.com/hunshcn/gh-proxy
+# CUSTOM_GITHUB_RAW_SOURCE_PROXY_URL=https://ghproxy.net
+
+# enable iptv checker, default is false
+# ENABLE_IPTV_CHECKER=true
+
+# add iptv checker url, default is empty
+# IPTV_CHECKER_URL=http://[::1]:8081
 ```
 
-- Run `docker ps` to get container status.
+## Q&A
 
-Wait a minute, visit <http://localhost:3000>.
-
-Then, you can use `http://localhost:3000` instead of `https://m3u.ibert.me`.
-
-For example: `https://m3u.ibert.me/cn.m3u` -> `http://localhost:3000/cn.m3u`
-
-Or, you can also deploy with your own server & domain.
-
-## Crontab
-
-Maybe you want to set schedule for auto-updating per 2 hours.
-
-- Download `iptv-update.sh` <https://github.com/HerbertHe/iptv-sources/blob/main/iptv-update.sh> to your homedir.
-
-- Edit you crontab:
-
-```bash
-crontab -e
-```
-
-- Press keyboard `i` for adding schedule.
-
-- Add:
-
-```cron
-0 */2 * * * /bin/sh ~/iptv-update.sh
-```
-
-- Press keyboard `ESC` to exit edit mode
-- Type `:wq` to save
-- Restart crontab service
-
-```bash
-service crond restart
-```
-
-## Update docker image
-
-- Download bash script file `update-image.sh` <https://github.com/HerbertHe/iptv-sources/blob/main/update-image.sh> to your homedir.
-
-- run
-
-```bash
-/bin/sh ~/update-image.sh
-```
+- [How to close the github raw content proxy](https://github.com/HerbertHe/iptv-sources/discussions/38)
+- [How to set the custom github raw source proxy url](https://github.com/HerbertHe/iptv-sources/discussions/39)
+- [How to use `iptv-checker` feature](https://github.com/HerbertHe/iptv-sources/discussions/40)
+- [How to add your own rollback urls](https://github.com/HerbertHe/iptv-sources/discussions/41)
+- [How to create custom sources based on the upstream](https://github.com/HerbertHe/iptv-sources/discussions/68)
 
 ## Star History
 
@@ -90,4 +70,6 @@ service crond restart
 
 ## LICENSE
 
-GPL-3.0 &copy; Herbert He 2023
+GPL-3.0 &copy; Herbert He
+
+本项目基于 GPL-3.0 协议开源。

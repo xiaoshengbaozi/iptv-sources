@@ -1,5 +1,6 @@
 .DS_Store
 .github
+.env
 
 node_modules
 dist
@@ -8,3 +9,5 @@ m3u
 back
 
 _config.temp.yml
+.editorconfig
+config
