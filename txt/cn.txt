@@ -37,7 +37,7 @@
 [VGA]宿迁新闻综合,https://stream1.freetv.fun/a64907b671da27891c25898bf188f556f599127a516b0f350cf836da1c13aa9a.ctv
 [SD]山东教育电视[ipv6],https://stream1.freetv.fun/83b0ddb5e0f2b25366e849e83589cf94eebf8513ab2da41983dc9e53f68b2578.m3u8
 [SD]山东生活,https://stream1.freetv.fun/78b52dd6e306fc85903331b0e9841f1d70469104d6fc7c86c7316f423ae18b93.m3u8
-[BD]山东卫视高清,https://stream1.freetv.fun/2f0c12268595ebe65723cfcf1eebe088d467f83f958b5783e8799cde31120914.m3u8
+[VGA]山东卫视高清,https://stream1.freetv.fun/2f0c12268595ebe65723cfcf1eebe088d467f83f958b5783e8799cde31120914.m3u8
 [SD]山东农科,https://stream1.freetv.fun/69213fe5384d8b0f546284b510d86325a02d6b9c1e471f1a1169d50889458c2f.m3u8
 [BD]山东齐鲁,https://stream1.freetv.fun/39855823c03804715a09a0edbb2274a5a73f776010ecd22551bc45159cb5f4e2.m3u8
 [SD]山西卫视[ipv6],https://stream1.freetv.fun/2f538e8c3c3dc60b99799fb3331f5f05b5a9c3c574544b4178a57a7de78f6884.m3u8
@@ -328,7 +328,7 @@
 [BD]cctv8[ipv6],https://stream1.freetv.fun/ba3b4e36fb922605a51884cd578cbd1d0bdf8c80a5278cd2a400a5facbbfb270.m3u8
 [SD]cctv第一剧场,https://stream1.freetv.fun/31cbe2ad06dc69104322ab8dc32fd094b5bc855f9e9a7f2efbdb34f91a819be0.m3u8
 [SD]CCM,https://stream1.freetv.fun/d083326b94065b2a6a2cc722e1289ce5a0b72df68d57d7f54f8f47eebbdddf8c.ctv
-[BD]chc动作电影,https://stream1.freetv.fun/d55f8444a0f39b81a169cd645abd85e822619c1c77a72ad0874f252b51ff769d.m3u8
+[SD]CHC动作电影,https://stream1.freetv.fun/db2b03a81692a8eae0b220e54bec1b35c2b50ff65676116d0332bb1e0defc869.ctv
 [BD]chc家庭影院,https://stream1.freetv.fun/a7da6445c1e09b6c04a04e62f117d67ddf77fb51603d25e04b7e21b53445aef9.m3u8
 [BD]chc影迷电影,https://stream1.freetv.fun/fb1e407995dc9699c2f42ace7d757b89a8464140d0e6b1a16f384d63e50bb43d.m3u8
 [VGA]1905电影网,https://stream1.freetv.fun/afb04190f4e569215b1983abc29e11f04d7b95045a637f6fecb7f0d41dcb666c.ctv

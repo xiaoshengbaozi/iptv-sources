@@ -45,7 +45,7 @@
 | 39 | [BD]cbn español (1080p) | stream1.freetv.fun | <https://stream1.freetv.fun/b895c387cf1a7aadb946718916a88c3e6c42546c24e02b76f6f62634c74deb03.m3u8> |
 | 40 | [BD]rt français | stream1.freetv.fun | <https://stream1.freetv.fun/64543fe572d9034545ac4a98661562b6960fcee879fdb5b6a79832cda28a3061.m3u8> |
 | 41 | [BD]cgtn русский | stream1.freetv.fun | <https://stream1.freetv.fun/98c909e5b48bbdfc98542e48a9c9b75e5daa58934298fc11ab1dc2748959947e.m3u8> |
-| 42 | [BD]chc动作电影 | stream1.freetv.fun | <https://stream1.freetv.fun/d55f8444a0f39b81a169cd645abd85e822619c1c77a72ad0874f252b51ff769d.m3u8> |
+| 42 | [SD]CHC动作电影 | stream1.freetv.fun | <https://stream1.freetv.fun/db2b03a81692a8eae0b220e54bec1b35c2b50ff65676116d0332bb1e0defc869.ctv> |
 | 43 | [BD]chc家庭影院 | stream1.freetv.fun | <https://stream1.freetv.fun/a7da6445c1e09b6c04a04e62f117d67ddf77fb51603d25e04b7e21b53445aef9.m3u8> |
 | 44 | [BD]chc影迷电影 | stream1.freetv.fun | <https://stream1.freetv.fun/fb1e407995dc9699c2f42ace7d757b89a8464140d0e6b1a16f384d63e50bb43d.m3u8> |
 | 45 | [HD]can news | stream1.freetv.fun | <https://stream1.freetv.fun/5402a0174b2a8f8714c024555a4e818fa25a6e9a478c240927f1a3616c393941.m3u8> |
@@ -157,7 +157,7 @@
 | 151 | [BD]山东新闻 | stream1.freetv.fun | <https://stream1.freetv.fun/af2c2ee3135deb52b58c752e9dbb489a8ebc0653c2f967b3147242cf24be1852.m3u8> |
 | 152 | [SD]山东生活 | stream1.freetv.fun | <https://stream1.freetv.fun/78b52dd6e306fc85903331b0e9841f1d70469104d6fc7c86c7316f423ae18b93.m3u8> |
 | 153 | [BD]山东综艺 | stream1.freetv.fun | <https://stream1.freetv.fun/1d514768bc06c7e3b2f812082f0f89cadfef559f158bd25490af6ef0f107356b.m3u8> |
-| 154 | [BD]山东卫视高清 | stream1.freetv.fun | <https://stream1.freetv.fun/2f0c12268595ebe65723cfcf1eebe088d467f83f958b5783e8799cde31120914.m3u8> |
+| 154 | [VGA]山东卫视高清 | stream1.freetv.fun | <https://stream1.freetv.fun/2f0c12268595ebe65723cfcf1eebe088d467f83f958b5783e8799cde31120914.m3u8> |
 | 155 | [SD]山东农科 | stream1.freetv.fun | <https://stream1.freetv.fun/69213fe5384d8b0f546284b510d86325a02d6b9c1e471f1a1169d50889458c2f.m3u8> |
 | 156 | [BD]山东体育 | stream1.freetv.fun | <https://stream1.freetv.fun/7662bf20ec19b22bc26a118f1918354e92b986fc3ad7e2a76884fac7791e0021.m3u8> |
 | 157 | [BD]山东齐鲁 | stream1.freetv.fun | <https://stream1.freetv.fun/39855823c03804715a09a0edbb2274a5a73f776010ecd22551bc45159cb5f4e2.m3u8> |
@@ -424,4 +424,4 @@
 | 418 | [BD]黑龙江卫视 50 fps | stream1.freetv.fun | <https://stream1.freetv.fun/7e118a9a23ec7f770a7bb9646a05267e59cf45f1da34bad27223781c1e1a9644.m3u8> |
 | 419 | [BD]黑龙江都市[ipv6] | stream1.freetv.fun | <https://stream1.freetv.fun/1175fe96b51b312afc0f98d824b8cce5c65a7c2a5911611ee31f00cef9b1f8dc.m3u8> |
 
-Updated at **Fri Jan 10 2025 04:11:57 GMT+0000 (Coordinated Universal Time)**
+Updated at **Fri Jan 10 2025 06:13:33 GMT+0000 (Coordinated Universal Time)**
